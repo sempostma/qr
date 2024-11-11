@@ -1,5 +1,6 @@
 'use server'
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import QRCode, { QRCodeMaskPattern } from 'qrcode'
 import { writeFile } from 'fs/promises'
 import path from 'path'
@@ -34,7 +35,7 @@ export async function generateQRCode(prevState: State, formData: FormData): Prom
     }
 
     const renderedOpts: QRCode.QRCodeRenderersOptions = {
-      width: data.width,
+      scale: data.scale,
       margin: data.margin,
       color: {
         light: data.lightColor,

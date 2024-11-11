@@ -1,13 +1,11 @@
 'use client'
 
 import { useState, useEffect, useMemo } from 'react'
-import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { Link, Mail, MessageSquare, Phone, User, Globe } from "lucide-react"
-import { FormControl, FormField, FormItem } from '@/components/ui/form'
+import { Mail, MessageSquare, Phone, User, Globe } from "lucide-react"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 
 // ... InputField component remains the same ...
@@ -161,11 +159,13 @@ END:VCARD`
 
   useEffect(() => {
     onChange(encodedResult)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [encodedResult])
 
   // Update encoded result whenever form values change
   useEffect(() => {
     updateEncodedResult()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedOption, url, contact, plainText, sms, email, phoneNumber])
 
   // ... existing handler functions remain the same ...

@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# QR Code Generator
 
-## Getting Started
+A powerful and flexible QR code generator web application available at [qr.esstudio.nl](https://qr.esstudio.nl). This tool allows you to create QR codes for various types of content including URLs, contact information, SMS messages, emails, and phone numbers.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Multiple Content Types Support:**
+  - URLs with UTM tracking parameters
+  - Contact information (vCard format)
+  - Plain text
+  - SMS messages
+  - Email links
+  - Phone numbers
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **URL QR Codes:**
+  - Generate QR codes for any web address
+  - Add UTM tracking parameters:
+    - Source
+    - Medium
+    - Campaign
+    - Term
+    - Content
+  - Perfect for marketing campaigns and analytics
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Contact QR Codes:**
+  - Create vCards with comprehensive contact details:
+    - Name (Prefix, First Name, Last Name)
+    - Title and Organization
+    - Multiple phone numbers
+    - Email address
+    - Physical address
+    - Fax number
+  - Compatible with most contact management systems
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **SMS QR Codes:**
+  - Pre-format SMS messages
+  - Include recipient number
+  - Automatically generates proper SMS format
 
-## Learn More
+- **Email QR Codes:**
+  - Include recipient address
+  - Pre-filled subject line
+  - Pre-composed email body
+  - Direct mail client integration
 
-To learn more about Next.js, take a look at the following resources:
+## How to Use
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Visit [qr.esstudio.nl](https://qr.esstudio.nl)
+2. Select the type of QR code you want to create
+3. Fill in the required information
+4. The QR code will be generated automatically
+5. Scan the QR code with any mobile device to test
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Use Cases
 
-## Deploy on Vercel
+- **Marketing Materials:**
+  - Add to business cards
+  - Include in print advertisements
+  - Place on product packaging
+  - Display on marketing collateral
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Business Operations:**
+  - Share contact information quickly
+  - Provide easy access to digital content
+  - Track marketing campaign effectiveness
+  - Simplify customer communication
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Personal Use:**
+  - Share your contact details
+  - Create quick links to social media profiles
+  - Generate easy-to-share phone numbers
+  - Create direct message links
+
+## Technical Details
+
+The QR code generator is built using:
+- Next.js for the frontend framework
+- React for UI components
+- Tailwind CSS for styling
+- shadcn/ui for UI components
+
+## Privacy
+
+- No data is stored on our servers
+- All QR code generation happens client-side
+- Your information remains private and secure
+
+## Support
+
+For support or feature requests, please create an issue on the GitHub repository or contact me through the website.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.

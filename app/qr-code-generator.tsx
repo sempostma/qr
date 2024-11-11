@@ -4,14 +4,12 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Label } from "@/components/ui/label"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Slider } from "@/components/ui/slider"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Switch } from "@/components/ui/switch"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
-import { AlertCircle, Scale } from "lucide-react"
-import Image from 'next/image'
+import { AlertCircle } from "lucide-react"
 import { useDebounce } from "@uidotdev/usehooks";
 import QRCode, { QRCodeOptions, QRCodeRenderersOptions } from 'qrcode'
 import { generateQRCode, State } from './actions'
@@ -26,6 +24,7 @@ import QRInputs from './inputs'
 
 const initialState: State = {}
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function SubmitButton() {
   const { pending } = useFormStatus()
 
@@ -44,11 +43,13 @@ const FormFieldValuesDebounced = ({ onChange }: FormFieldValuesDebouncedProps) =
   useWatch()
   const { getValues } = useFormContext()
   const formFieldsDeps = getValues(['darkColor', 'darkTransparent', 'errorCorrection', 'input', 'lightColor', 'lightTransparent', 'logo', 'margin', 'mask', 'outputType', 'qVersion', 'scale'])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const formValues = useMemo(() => getValues(), formFieldsDeps)
   const debouncedValue = useDebounce(formValues, 300)
 
   useEffect(() => {
     onChange(debouncedValue)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedValue])
 
   return null
@@ -116,7 +117,7 @@ export default function QRCodeGenerator() {
 
     const scale = renderedOpts.scale!
     const margin = renderedOpts.margin!
-    const { input, outputType, logo } = data
+    const { input, logo } = data
 
     const canvas = canvasRef.current
     if (!canvas) return
@@ -187,7 +188,7 @@ export default function QRCodeGenerator() {
     downloadToCanvas(`qr-${data.scale}.png`)
   }, [renderToCanvas, downloadToCanvas])
 
-  const [renderError, setRenderError] = useState<any>()
+  const [renderError, setRenderError] = useState<string | undefined | Error>()
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const tabValue = useMemo(() => isOpen ? 'advancedOptions' : undefined, [isOpen])
@@ -205,7 +206,7 @@ export default function QRCodeGenerator() {
             <AlertCircle className="h-4 w-4" />
             <AlertTitle>QR Code Error</AlertTitle>
             <AlertDescription>
-              {renderError.message || renderError || 'Unknown error during rendering'}
+              {(typeof renderError === 'object' ? renderError.message : typeof renderError === 'string' ? renderError : 'Unknown error during rendering')}
             </AlertDescription>
           </Alert>
         )}
@@ -336,7 +337,7 @@ export default function QRCodeGenerator() {
                       </Button>
                     </div>
                     <FormDescription>
-                      If you want to add your own logo, make sure to put the Error Correction Level to 'H' (High).
+                      If you want to add your own logo, make sure to put the Error Correction Level to {"'"}H{"'"} (High).
                     </FormDescription>
                   </FormItem>
                 )} />

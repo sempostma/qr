@@ -1,4 +1,4 @@
-import QRCode, { QRCodeMaskPattern, QRCodeOptions, QRCodeRenderersOptions } from "qrcode";
+import { QRCodeMaskPattern } from "qrcode";
 import { z } from "zod";
 
 export const QRForm = z.object({
@@ -72,9 +72,9 @@ export function centerImageWithClearArea(
   // Return the placement details
   return {
     imageArea: {
-      x: position.x, 
-      y: position.y, 
-      width: scaledWidth, 
+      x: position.x,
+      y: position.y,
+      width: scaledWidth,
       height: scaledHeight
     },
     clearedArea: {
